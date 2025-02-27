@@ -4,11 +4,13 @@ import sora from '../../assets/images/favicon.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../../context/athoucontext';
 import { CartContext } from '../../context/Cartcontext';
+// import {wishNum} from '../../componts/WishList'
 
 export function Navbar() {
 const navigate =useNavigate()
 
 const {cartnum} = useContext(CartContext)
+const{wishNum} = useContext(CartContext)
 let {token,setToken} = useContext(Authcontext)
  
 function logout(){
@@ -58,8 +60,51 @@ navigate('/login')
 
         {token ? (
           <>
-            <li><Link to="cart" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Cart: {cartnum}</Link></li>
-            <li><Link to="categories" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Categories</Link></li>
+            <li><Link to="cart" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Cart
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+  
+            
+            
+            <div className="relative inline-block">
+      {cartnum > 0 && (
+        <div className="absolute bottom-3 right-0 bg-red-500 text-white text-x font-bold w-5 h-5 flex items-center justify-center rounded-full">
+          {cartnum}
+        </div>
+      )}
+    </div>
+            
+            
+            
+            
+   
+            
+  </Link></li>
+            <li><Link to="catigories" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Categories</Link></li>
+            <li><Link to="wishlist" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Wish Lis
+            
+            
+            
+                   
+            <div className="relative inline-block">
+      {wishNum > 0 && (
+        <div className="absolute bottom-3 right-0 bg-blue-500 text-white text-x font-bold w-5 h-5 flex items-center justify-center rounded-full">
+          {wishNum}
+        </div>
+      )}
+    </div>
+            
+            
+             </Link></li>
+
             <li><Link to="brands" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Brands</Link></li>
             <li><Link to="order" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Order</Link></li>
           </>

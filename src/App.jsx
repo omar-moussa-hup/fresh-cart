@@ -23,6 +23,10 @@ import { CartContextProvider } from './context/Cartcontext'
 import { Order } from './componts/Order/Order'
 import { AllOrders } from './componts/AllOrders/AllOrders'
 import { Toaster } from 'react-hot-toast'
+import { ForgetPassword } from './componts/ForgetPassword/ForgetPassword'
+import { Verify } from './componts/Verify/Verify'
+import { Newpass } from './componts/Newpass/Newpass'
+import { WishList } from './componts/WishList/WishList'
 
 const queryClient = new QueryClient()
 
@@ -30,10 +34,16 @@ const routes= createBrowserRouter([
   { path: '', element: <Layout />, children: [
     { index: true, element:  <Home />},
     { path: 'home', element:  <Home /> },
+    { path: 'forget', element: <AuthGuard> <ForgetPassword /></AuthGuard>  },
     { path: 'detils/:id', element:  <ProductDetils /> },
     { path: 'register', element:<AuthGuard><Register /></AuthGuard>  },
     { path: 'cart', element:  <Guard><Cart /></Guard>  },
+    { path: 'wishlist', element:  <Guard><WishList /></Guard>  },
+
     { path: 'login', element: <AuthGuard><Login/></AuthGuard>  },
+    { path: 'verify', element: <AuthGuard><Verify/></AuthGuard>  },
+    { path: 'newpassword', element: <AuthGuard><Newpass/></AuthGuard>  },
+
     { path: 'brands', element:  <Guard><Brands /></Guard>  },
     { path: 'allorders', element:  <Guard><AllOrders /></Guard>  },
     { path: 'order', element:  <Guard><Order /></Guard>  },

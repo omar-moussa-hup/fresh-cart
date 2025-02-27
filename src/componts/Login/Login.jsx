@@ -67,6 +67,11 @@ validationSchema:schema,
 
 
 })
+
+function forget(values){
+navigate('/forget')
+console.log(values)
+}
   return (<>
   
   
@@ -99,10 +104,13 @@ validationSchema:schema,
   </div>  {msg?<div className="p-4 py-8 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
   <span className="font-medium">Danger alert!</span> {msg}
 </div>:null}
-  <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{loading? 'loading...':'submit '}</button>
- 
-</form>
+<div className='flex justify-between'>
+<button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{loading? 'loading...':'submit '}</button>
+ <button type='button'  className='text-white p-2' onClick={forget} >Forget Password</button>
 
+</div>
+
+</form>
 </div>
 
   </>);

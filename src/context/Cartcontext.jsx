@@ -8,6 +8,8 @@ export function CartContextProvider({ children }) {
     const[cartItem,setCartItem] = useState([])
     const [Total,setTotal] =useState()
     const [cartId,setcartId] = useState()
+    const [wishItem,setwishItem]= useState([])
+    const[wishNum,setwishcNum]= useState(0)
 
     async function addtocart(id) {
         try {
@@ -28,6 +30,49 @@ export function CartContextProvider({ children }) {
         }
     }
 
+    async function addToWish(id) {
+
+        try{
+
+            const res = await axios.post('https://ecommerce.routemisr.com/api/v1/wishlist',{
+
+                productId:id
+                        },{
+                            headers:{
+                                token:localStorage.getItem('token')
+                            }
+                        })
+            console.log(res)
+            setwishcNum(res.data.data.length)
+
+
+            toast.success('Product added successfully to your wishlist!')
+
+        }catch(err){
+console.log(err)
+        }
+        
+    }
+      async function getWishList() {
+    
+        try{
+    
+    
+    const res =await axios.get('https://ecommerce.routemisr.com/api/v1/wishlist',{
+      headers:{
+        token:localStorage.getItem('token')
+      }
+    })
+    console.log(res.data.data)
+    setwishItem(res.data.data)
+    setwishcNum(res.data.count)
+        }catch(err){
+          console.log(err)
+        }
+    
+    
+        
+      }
     async function getcartItem() {
 
 
@@ -120,8 +165,28 @@ console.log(err)
           }
           }
 
+          async function deleteWishItem(id) {
+
+            try{
+
+
+                const res =await axios.delete(`https://ecommerce.routemisr.com/api/v1/wishlist/${id}`,{
+                    headers:{
+                        token:localStorage.getItem('token')
+                    }
+                })
+                console.log(res)
+                getWishList()
+                setwishcNum(res.data.count)
+
+
+            }catch(err){
+                console.log(err)
+            }
+            
+          }
     return (
-        <CartContext.Provider value={{ setCartnum,cartnum,clearAll, addtocart ,getcartItem, cartItem,updateItemCart,Total,removeCartItem,cartId}}>
+        <CartContext.Provider value={{ setCartnum,deleteWishItem,wishNum,wishItem,getWishList ,cartnum,clearAll,addToWish, addtocart ,getcartItem, cartItem,updateItemCart,Total,removeCartItem,cartId}}>
             {children}
         </CartContext.Provider>
     );

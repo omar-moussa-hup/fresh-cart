@@ -25,7 +25,7 @@ getBrands()
   
   
   return (<>
-  <div className=" container  mx-auto py-5 bg-gray-900 grid grid-cols-3">
+  <div className=" container my-8 mx-auto py-5 bg-gray-900 grid grid-cols-3">
   {brand.map((item)=>  {
     return <div className="mx-auto text-white" key={item._id}> 
 

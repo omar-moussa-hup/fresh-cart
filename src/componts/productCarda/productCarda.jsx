@@ -10,6 +10,7 @@ export function ProductCarda(prpos) {
 const ratingsAverage = Math.floor(product.ratingsAverage) 
 
 const {addtocart} = useContext(CartContext)
+const {addToWish} = useContext(CartContext)
 
 
   return (<>
@@ -43,10 +44,16 @@ const {addtocart} = useContext(CartContext)
         </div>
         <div className="flex items-center justify-between">
             <span className="text-3xl font-bold text-gray-900 dark:text-white">${product.price}</span>
-            <Link onClick={()=>{addtocart(product._id)}} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</Link>
+          
         </div>
     </div>
 </div>
+
+         
+            <button onClick={()=>{addToWish(product._id)}} className="text-white w-full bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Add to wish list</button>
+        <button onClick={()=>{addtocart(product._id)}} className="text-white my-3 bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:outline-none focus:ring-lime-300 font-medium rounded-lg w-full text-sm px-5 py-2.5 text-center dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800">Add to cart</button>
+
+
 </div>
   
   

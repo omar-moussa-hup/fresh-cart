@@ -29,7 +29,8 @@ export function Catigories() {
 
 return (<>
 
-<div className="grid  container mx-auto grid-cols-3 ">
+
+<div className="grid  container mx-auto grid-cols-3  my-8 text-white bg-gray-800 gap-4">
 {catigories.map((catigory) => {
 
   return  <div>
